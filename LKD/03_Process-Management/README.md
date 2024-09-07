@@ -26,13 +26,16 @@ You can answer all of these questions after reading this chapter.
 - ***Process descriptor*** contains all the information about a specific process. 
 - In Linux, ```struct task_struct``` definded in ```<linux/sched.h>``` is process descriptor. 
 <br>
+
 ![the process desriptor and task list](../imgs/task-list.png)
+
 ## Process Creation
 
 ### Allocating the Process Descriptor
 - The ```struct task_struct``` is allocated via the _slab allocator_ which creates a new structure 
 <br>```struct thread_info ``` included in ```<asm/thread_info.h>``` living at the bottom of the stack.
 <br>
+
 ![the process descriptor and kernel stack](../imgs/kernel-stack.png)
 
 ### Storing the Process Descriptor
@@ -51,7 +54,8 @@ The kernel store ***PID*** as _pid_ inside each process descriptor.
 + TASK_TRACED
 + TASK_STOPPED
 <br>
-![flow chart of process state](../imgs/flos-of-process)
+
+![flow chart of process state](../imgs/flow-of-process.png)
 
 ### Manipulating the Current Process State
 - Kernel code often needs to change a process's state. 
@@ -63,7 +67,7 @@ The kernel store ***PID*** as _pid_ inside each process descriptor.
 - When a __user-space__ process enters __kernel-space__, it is in ***process context*** and the macro __current__ is valid.
 - __System calls__ and __exception handlers__ are the only interfaces to access to the kernel.
 > [!NOTE]
-> Other than process context there is interrupt context. ” In interrupt context, the system is not running on behalf of a process but is executing an interrupt handler. No process is tied to interrupt handlers.
+> Other than process context there is interrupt context. In interrupt context, the system is not running on behalf of a process but is executing an interrupt handler. No process is tied to interrupt handlers.
     
 ### The Process Family Tree    
 - All processes are descendants of the ___init___ process, whose PID is 1. 
