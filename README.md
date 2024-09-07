@@ -1,2 +1,2 @@
-# Hmmm-s-notes
-Repository for my book's notes
+# Hmmm's notes
+Repository for my reading book's notes
